@@ -1,6 +1,11 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import Link from "next/link";
+
+// Importing Components
+import SparklesIcon from "@/components/SparklesIcon";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -11,7 +16,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className + " bg-gradient-to-b from-bg-gradient-from to-bg-gradient-to min-h-screen text-white"}>
+      <main className="p-4 max-w-2xl mx-auto">
+      <header className="flex justify-between my-8 ">
+        <Link href="/" className="flex">
+          <SparklesIcon />
+          <span>
+            Epic Captions
+          </span>
+        </Link>
+        <nav className="flex gap-6 text-white/80">
+          <Link href={"/"}>Home</Link>
+          <Link href={"/pricing"}>Pricing</Link>
+          <Link href={"/contact "}>Contact</Link>
+        </nav>
+      </header>
+        {children}
+      </main>
+      </body>
     </html>
   );
 }
